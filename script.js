@@ -9,42 +9,42 @@ const products = [
         id: 1,
         name: "Cà phê Arabica",
         price: 150000,
-        image: "../img/produce/arabica.jpg",
+        image: "img/produce/arabica.jpg",
         desc: "Hương thơm nhẹ nhàng, vị chua thanh thoát."
     },
     {
         id: 2,
         name: "Cà phê Robusta",
         price: 120000,
-        image: "../img/produce/robusta.jpg",
+        image: "img/produce/robusta.jpg",
         desc: "Vị đắng đậm đà, hàm lượng caffeine cao."
     },
     {
         id: 3,
         name: "Cà phê túi lọc",
         price: 85000,
-        image: "../img/produce/cftuiloc.png",
+        image: "img/produce/cftuiloc.png",
         desc: "Tiện lợi, giữ trọn hương vị pha phin."
     },
     {
         id: 4,
         name: "Cà phê Moka",
         price: 55000,
-        image: "../img/produce/cfmoka.jpg",
+        image: "img/produce/cfmoka.jpg",
         desc: "Cà phê ủ lạnh mượt mà, ít acid."
     },
     {
         id: 5,
         name: "Cà phê Culi",
         price: 35000,
-        image: "../img/produce/cfculi.webp",
+        image: "img/produce/cfculi.webp",
         desc: "Đặc sản đường phố Việt Nam."
     },
     {
         id: 6,
         name: "Combo cà phê",
         price: 450000,
-        image: "../img/produce/comboqua.jpg",
+        image: "img/produce/comboqua.jpg",
         desc: "Bộ quà tặng ý nghĩa cho người yêu cà phê."
     }
 ];
