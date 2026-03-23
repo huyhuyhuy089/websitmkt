@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MKT COFFEE - Kết nối hương vị Việt</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons (via CDN for simplicity in vanilla JS) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../img/lomkt.jpg" type="image/png">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="../img/lomkt.jpg" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
+                MKT <span>COFFEE</span>
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Trang chủ</a></li>
+                    <li><a href="#about" class="nav-link">Giới thiệu</a></li>
+                    <li><a href="#products" class="nav-link">Sản phẩm</a></li>
+                    <li><a href="#blog" class="nav-link">Tin tức</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link" id="track-order-btn">Tra cứu đơn hàng</a></li>
+                    <li><a href="javascript:void(0)" class="nav-link" id="contact-menu-link">Liên hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="cart-icon-wrapper" id="cart-toggle">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </div>
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <i data-lucide="menu"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-close" id="mobile-menu-close">
+            <i data-lucide="x"></i>
+        </div>
+        <div class="mobile-menu-brand">
+            <img src="../img/lomkt.jpg" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="#home" class="mobile-nav-link">Trang chủ</a></li>
+            <li><a href="#about" class="mobile-nav-link">Giới thiệu</a></li>
+            <li><a href="#products" class="mobile-nav-link">Sản phẩm</a></li>
+            <li><a href="#blog" class="mobile-nav-link">Tin tức</a></li>
+            <li><a href="javascript:void(0)" class="mobile-nav-link" id="mobile-track-order-btn">Tra cứu đơn hàng</a></li>
+            <li><a href="javascript:void(0)" class="mobile-nav-link" id="mobile-contact-link">Liên hệ</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Kết nối hương vị Việt</h1>
+                    <p class="hero-subtitle">MKT COFFEE mang đến trải nghiệm cà phê nguyên chất, đậm đà bản sắc Việt Nam trong từng giọt đắng.</p>
+                    <a href="#products" class="btn btn-primary">Mua ngay</a>
+                </div>
+                <div class="hero-slider">
+                    <div class="slider-wrapper" id="hero-slider">
+                        <div class="slide active">
+                            <img src="../img/siderbar.jpg" alt="Coffee Cup 1" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="slide">
+                            <img src="../img/gioithieu.jpg" alt="Coffee Cup 2" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="slide">
+                            <img src="img/hero-3.jpg" alt="Coffee Cup 3" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="slide">
+                            <img src="img/hero-4.jpg" alt="Coffee Cup 4" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="slide">
+                            <img src="../img/lomkt.jpg" alt="Coffee Cup 5" referrerPolicy="no-referrer">
+                        </div>
+                    </div>
+                    <div class="slider-dots" id="hero-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Về Chúng Tôi</h2>
+                    <div class="section-underline"></div>
+                </div>
+                <div class="about-grid">
+                    <div class="about-image">
+                        <img src="img/gioithieu.jpg" alt="Coffee Beans" referrerPolicy="no-referrer">
+                    </div>
+                    <div class="about-text">
+                        <h3>MKT COFFEE - Hành trình di sản</h3>
+                        <p>Bắt đầu từ những đồi cà phê bạt ngàn tại Tây Nguyên, MKT COFFEE ra đời với sứ mệnh gìn giữ và lan tỏa hương vị cà phê truyền thống Việt Nam đến với mọi người.</p>
+                        <p>Chúng tôi chú trọng vào quy trình rang xay thủ công, kết hợp với công nghệ hiện đại để giữ trọn vẹn tinh túy của hạt cà phê Arabica và Robusta thượng hạng.</p>
+                        <div class="about-features">
+                            <div class="feature">
+                                <i data-lucide="check-circle"></i>
+                                <span>100% Nguyên chất</span>
+                            </div>
+                            <div class="feature">
+                                <i data-lucide="check-circle"></i>
+                                <span>Rang xay thủ công</span>
+                            </div>
+                            <div class="feature">
+                                <i data-lucide="check-circle"></i>
+                                <span>Nguồn gốc rõ ràng</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products" id="products">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Sản Phẩm Nổi Bật</h2>
+                    <div class="section-underline"></div>
+                </div>
+                <div class="product-grid" id="product-list">
+                    <!-- Products will be injected by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section (Static for UI) -->
+        <section class="blog" id="blog">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Tin Tức & Blog</h2>
+                    <div class="section-underline"></div>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <img src="../img/gioithieu.jpg" alt="Blog 1" referrerPolicy="no-referrer">
+                        <div class="blog-info">
+                            <span class="blog-date">20/03/2026</span>
+                            <h4>Cách pha cà phê phin đậm đà</h4>
+                            <p>Bí quyết để có một ly cà phê phin đúng chuẩn người Việt...</p>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <img src="img/siderbar.jpg" alt="Blog 2" referrerPolicy="no-referrer">
+                        <div class="blog-info">
+                            <span class="blog-date">20/03/2026</span>
+                            <h4>Lợi ích của cà phê sạch</h4>
+                            <p>Tại sao bạn nên chọn cà phê nguyên chất thay vì cà phê trộn...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section-hidden" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Liên Hệ</h2>
+                    <div class="section-underline"></div>
+                </div>
+                <div class="contact-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Họ và tên</label>
+                            <input type="text" id="name" placeholder="Nhập tên của bạn" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Nhập email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Lời nhắn</label>
+                            <textarea id="message" rows="4" placeholder="Bạn cần hỗ trợ gì?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Gửi tin nhắn</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-links">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="#home">Trang chủ</a></li>
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#products">Sản phẩm</a></li>
+                    <li><a href="#blog">Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    MKT <span>COFFEE</span>
+                </a>
+                <p>Kết nối hương vị Việt - Mang tinh hoa cà phê Việt ra thế giới.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="#" title="TikTok">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </a>
+                    <a href="#" title="Shopee">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Thông tin liên hệ</h4>
+                <p><i data-lucide="map-pin"></i> 123 Đường Cà Phê, Buôn Ma Thuột</p>
+                <p><i data-lucide="phone"></i> 0399 469 584</p>
+                <p><i data-lucide="mail"></i> contact@mktcoffee.vn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MKT COFFEE. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Giỏ hàng của bạn</h3>
+            <div class="cart-close" id="cart-close">
+                <i data-lucide="x"></i>
+            </div>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be injected by JavaScript -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Tổng cộng:</span>
+                <span id="cart-total-price">0đ</span>
+            </div>
+            <button class="btn btn-primary btn-block" id="checkout-btn">Thanh toán ngay</button>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkout-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Thông tin đặt hàng</h3>
+                <div class="modal-close" id="modal-close">
+                    <i data-lucide="x"></i>
+                </div>
+            </div>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="checkout-name">Họ và tên</label>
+                    <input type="text" id="checkout-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-phone">Số điện thoại</label>
+                    <input type="tel" id="checkout-phone" pattern="[0-9]*" inputmode="numeric" placeholder="Ví dụ: 0123456789" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-address">Địa chỉ giao hàng</label>
+                    <textarea id="checkout-address" rows="3" required></textarea>
+                </div>
+                <div class="order-summary">
+                    <h4>Tóm tắt đơn hàng</h4>
+                    <div id="order-summary-list"></div>
+                    <div class="order-total">
+                        <strong>Tổng tiền:</strong>
+                        <strong id="order-total-price">0đ</strong>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Xác nhận đặt hàng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content product-modal-content">
+            <div class="modal-header">
+                <h3 id="modal-product-name">Tên sản phẩm</h3>
+                <div class="modal-close" id="product-modal-close">
+                    <i data-lucide="x"></i>
+                </div>
+            </div>
+            <div class="product-modal-body">
+                <div class="product-modal-image">
+                    <img id="modal-product-image" src="" alt="" referrerPolicy="no-referrer">
+                </div>
+                <div class="product-modal-info">
+                    <p class="product-modal-price" id="modal-product-price">0đ</p>
+                    <p class="product-modal-desc" id="modal-product-desc">Mô tả sản phẩm...</p>
+                    <button class="btn btn-primary btn-block" id="modal-add-to-cart">Thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Tracking Modal -->
+    <div class="modal" id="track-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Tra cứu đơn hàng</h3>
+                <div class="modal-close" id="track-modal-close">
+                    <i data-lucide="x"></i>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form id="track-form">
+                    <div class="form-group">
+                        <label for="track-name">Họ và tên</label>
+                        <input type="text" id="track-name" placeholder="Nhập họ tên khi đặt hàng" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="track-phone">Số điện thoại</label>
+                        <input type="tel" id="track-phone" placeholder="Nhập số điện thoại khi đặt hàng" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Tra cứu ngay</button>
+                </form>
+                <div id="track-results" class="track-results">
+                    <!-- Results will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="color: #27ae60;">Đặt hàng thành công!</h3>
+                <div class="modal-close" id="success-modal-close">
+                    <i data-lucide="x"></i>
+                </div>
+            </div>
+            <div class="success-body">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <i data-lucide="check-circle" style="width: 64px; height: 64px; color: #27ae60;"></i>
+                </div>
+                <p>Cảm ơn bạn đã tin tưởng MKT COFFEE. Đơn hàng của bạn đã được tiếp nhận.</p>
+                <div class="order-review">
+                    <h4>Chi tiết đơn hàng của bạn:</h4>
+                    <div id="success-order-summary"></div>
+                    <div class="order-total" style="border-top: 1px solid #eee; padding-top: 10px; margin-top: 10px;">
+                        <strong>Tổng tiền đã thanh toán:</strong>
+                        <strong id="success-total-price">0đ</strong>
+                    </div>
+                </div>
+                <div style="margin-top: 20px;">
+                    <p><strong>Người nhận:</strong> <span id="success-name"></span></p>
+                    <p><strong>Số điện thoại:</strong> <span id="success-phone"></span></p>
+                    <p><strong>Địa chỉ:</strong> <span id="success-address"></span></p>
+                </div>
+                <button class="btn btn-primary btn-block" style="margin-top: 20px;" id="success-done-btn">Tiếp tục mua sắm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Đã thêm vào giỏ hàng!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
