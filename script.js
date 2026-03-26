@@ -3,6 +3,18 @@
  * Chức năng: Quản lý giỏ hàng, UI interactions, LocalStorage
  */
 
+const firebaseConfig = {
+  apiKey: "AIzaSyDowZeJhS39krlKgo63rdCNIUE8CjUrxGQ",
+  authDomain: "web-mkt-8db1c.firebaseapp.com",
+  projectId: "web-mkt-8db1c",
+  storageBucket: "web-mkt-8db1c.firebasestorage.app",
+  messagingSenderId: "752096364222",
+  appId: "1:752096364222:web:d374e2dc2557623c5b40ef",
+  measurementId: "G-TB0FR05G30"
+};
+
+
+
 // 1. Dữ liệu mẫu sản phẩm
 const products = [
     {
@@ -16,7 +28,7 @@ const products = [
         id: 2,
         name: "Cà phê Robusta",
         price: 120000,
-        image: "img/produce/robusta.jpg",
+        image: "img/produce/cfrobuta.jpg",
         desc: "Vị đắng đậm đà, hàm lượng caffeine cao."
     },
     {
@@ -29,14 +41,14 @@ const products = [
     {
         id: 4,
         name: "Cà phê Moka",
-        price: 55000,
+        price: 155000,
         image: "img/produce/cfmoka.jpg",
         desc: "Cà phê ủ lạnh mượt mà, ít acid."
     },
     {
         id: 5,
         name: "Cà phê Culi",
-        price: 35000,
+        price: 135000,
         image: "img/produce/cfculi.webp",
         desc: "Đặc sản đường phố Việt Nam."
     },
@@ -315,6 +327,78 @@ function setupEventListeners() {
         overlay.classList.remove('active');
     });
 
+    let currentDiscount = 0;
+
+    function updateCheckoutTotal() {
+        const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+        const finalTotal = subtotal - currentDiscount;
+        document.getElementById('order-total-price').textContent = formatPrice(finalTotal);
+    }
+
+    // Discount Code Logic 
+    // document.addEventListener('click', (e) => {
+    //     if (e.target.id === 'apply-discount') {
+    //         const discountInput = document.getElementById('discount-code');
+    //         const discountDisplay = document.getElementById('discount-display');
+    //         const discountAmountText = document.getElementById('discount-amount');
+    //         const code = discountInput.value.trim().toUpperCase();
+    //         // add mã giảm giá
+    //         if (code === 'NGUYENTANHUY') {
+    //             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    //             currentDiscount = Math.round(subtotal * 0.2);
+    //             discountDisplay.style.display = 'flex';
+    //             discountAmountText.textContent = `-${formatPrice(currentDiscount)}`;
+    //             updateCheckoutTotal();
+    //             alert('Áp dụng mã giảm giá thành công! Giảm 10%');
+    //         } else if (code === '') {
+    //             alert('Vui lòng nhập mã giảm giá');
+    //         } else {
+    //             alert('Mã giảm giá không hợp lệ');
+    //             currentDiscount = 0;
+    //             discountInput.value = '';
+    //             discountDisplay.style.display = 'none';
+    //             updateCheckoutTotal();
+    //         }
+    //     }
+    // });
+    // code tet
+    document.addEventListener('click', (e) => {
+    if (e.target.id === 'apply-discount') {
+        const discountInput = document.getElementById('discount-code');
+        const discountDisplay = document.getElementById('discount-display');
+        const discountAmountText = document.getElementById('discount-amount');
+        const message = document.getElementById('discount-message');
+
+        const code = discountInput.value.trim().toUpperCase();
+        // add mã
+        if (code === 'NGUYENTANHUY') {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            currentDiscount = Math.round(subtotal * 0.1);
+
+            discountDisplay.style.display = 'flex';
+            discountAmountText.textContent = `-${formatPrice(currentDiscount)}`;
+            updateCheckoutTotal();
+
+            // ✅ thông báo thành công
+            message.textContent = "Áp dụng mã thành công!";
+            message.style.color = "green";
+
+        } else if (code === '') {
+            message.textContent = "Vui lòng nhập mã giảm giá";
+            message.style.color = "orange";
+
+        } else {
+            message.textContent = "Mã giảm giá không hợp lệ";
+            message.style.color = "red";
+
+            currentDiscount = 0;
+            discountInput.value = '';
+            discountDisplay.style.display = 'none';
+            updateCheckoutTotal();
+        }
+    }
+});
+
     checkoutForm.addEventListener('submit', (e) => {
         e.preventDefault();
         
@@ -322,9 +406,9 @@ function setupEventListeners() {
         const phone = document.getElementById('checkout-phone').value;
         const address = document.getElementById('checkout-address').value;
 
-        // Kiểm tra số điện thoại chỉ chứa số
-        if (!/^\d+$/.test(phone)) {
-            alert('Số điện thoại chỉ được chứa các chữ số!');
+        // Kiểm tra số điện thoại: bắt đầu bằng số 0 và chỉ chứa số
+        if (!/^0\d+$/.test(phone)) {
+            alert('Số điện thoại phải bắt đầu bằng số 0 và chỉ chứa các chữ số!');
             return;
         }
 
@@ -343,7 +427,8 @@ function setupEventListeners() {
         `).join('');
 
         const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        successTotalPrice.textContent = formatPrice(total);
+        const finalTotal = total - currentDiscount;
+        successTotalPrice.textContent = formatPrice(finalTotal);
         successName.textContent = name;
         successPhone.textContent = phone;
         successAddress.textContent = address;
@@ -356,7 +441,9 @@ function setupEventListeners() {
             phone: phone,
             address: address,
             items: [...cart],
-            total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+            subtotal: total,
+            discount: currentDiscount,
+            total: finalTotal
         };
         orders.push(newOrder);
         saveOrders();
@@ -424,6 +511,12 @@ function setupEventListeners() {
                             </div>
                         `).join('')}
                     </div>
+                    ${order.discount > 0 ? `
+                    <div class="found-item" style="color: var(--secondary); font-weight: 600; font-size: 13px; margin-bottom: 10px;">
+                        <span>Giảm giá:</span>
+                        <span>-${formatPrice(order.discount)}</span>
+                    </div>
+                    ` : ''}
                     <div class="found-order-total">
                         <strong>Tổng cộng: ${formatPrice(order.total)}</strong>
                     </div>
@@ -467,6 +560,9 @@ function setupEventListeners() {
     const totalSlides = 5;
 
     if (sliderWrapper && dots.length > 0) {
+        const heroContent = document.querySelector('.hero-content');
+        const slides = document.querySelectorAll('.slide');
+
         function goToSlide(index) {
             currentSlide = index;
             sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -475,6 +571,14 @@ function setupEventListeners() {
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentSlide);
             });
+
+            // Update hero content color
+            if (heroContent && slides[currentSlide]) {
+                const color = slides[currentSlide].getAttribute('data-color');
+                if (color) {
+                    heroContent.style.background = color;
+                }
+            }
         }
 
         function nextSlide() {
@@ -484,6 +588,19 @@ function setupEventListeners() {
 
         // Auto play
         let sliderInterval = setInterval(nextSlide, 5000);
+
+        // Initialize first slide color
+        goToSlide(0);
+
+        // Click to next slide
+        const heroSlider = document.querySelector('.hero-slider');
+        if (heroSlider) {
+            heroSlider.addEventListener('click', () => {
+                clearInterval(sliderInterval);
+                nextSlide();
+                sliderInterval = setInterval(nextSlide, 5000);
+            });
+        }
 
         // Dot clicks
         dots.forEach((dot, index) => {
@@ -523,7 +640,14 @@ function removeFromCart(id) {
 function renderOrderSummary() {
     const summaryList = document.getElementById('order-summary-list');
     const orderTotal = document.getElementById('order-total-price');
+    const discountInput = document.getElementById('discount-code');
+    const discountDisplay = document.getElementById('discount-display');
     
+    // Reset discount when opening
+    currentDiscount = 0;
+    if (discountInput) discountInput.value = '';
+    if (discountDisplay) discountDisplay.style.display = 'none';
+
     summaryList.innerHTML = cart.map(item => `
         <div class="order-summary-item">
             <span>${item.name} x ${item.quantity}</span>
@@ -553,6 +677,32 @@ function initScrollReveal() {
 
     reveals.forEach(reveal => {
         observer.observe(reveal);
+    });
+    // Parallax effect for collage items
+    window.addEventListener('scroll', () => {
+        const collage = document.querySelector('.about-collage');
+        if (!collage) return;
+
+        const rect = collage.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (isInView) {
+            const scrollPercent = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+            const items = collage.querySelectorAll('.collage-item');
+            const labels = collage.querySelectorAll('.collage-label');
+
+            items.forEach((item, index) => {
+                const speed = (index + 1) * 20;
+                const yPos = (scrollPercent - 0.5) * speed;
+                item.style.transform = `translateY(${yPos}px)`;
+            });
+
+            labels.forEach((label, index) => {
+                const speed = (index + 1) * 30;
+                const yPos = (scrollPercent - 0.5) * speed;
+                label.style.transform = `translateY(${yPos}px)`;
+            });
+        }
     });
 }
 

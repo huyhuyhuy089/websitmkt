@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới thiệu - MKT COFFEE</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="img/logo/logophu.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --editorial-bg: #F9F7F2;
+            --editorial-ink: #1a1a1a;
+            --editorial-accent: #8b4513;
+        }
+
+        .about-page {
+            background-color: var(--editorial-bg);
+            color: #000;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .about-hero {
+            min-height: 50vh;
+            padding-top: 120px;
+            padding-bottom: 60px;
+            background: linear-gradient(rgba(253, 250, 246, 0.85), rgba(253, 250, 246, 0.85)), url('https://picsum.photos/seed/coffee-farm/1920/1080') center/cover no-referrer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 40px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .about-hero h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .editorial-section {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .editorial-content h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            color: var(--primary);
+        }
+
+        .editorial-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .editorial-image {
+            position: relative;
+        }
+
+        .editorial-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 20px 20px 0px var(--secondary);
+        }
+
+        .mission-vision {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .mission-vision h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .mv-card {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .mv-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .mv-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mv-card li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .mv-card li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+        }
+
+        .philosophy-section {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .philosophy-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 4rem;
+            margin-bottom: 60px;
+            font-style: italic;
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .philosophy-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .product-showcase {
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .product-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .product-feature-card {
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .product-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            border-color: var(--secondary);
+        }
+
+        .product-feature-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .difference-section {
+            padding: 60px 0;
+            background: var(--editorial-bg);
+        }
+
+        .diff-item {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .diff-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .diff-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 5rem;
+            color: var(--secondary);
+            opacity: 0.3;
+            font-weight: 900;
+        }
+
+        .experience-banner {
+            background: linear-gradient(rgba(253, 250, 246, 0.9), rgba(253, 250, 246, 0.9)), url('https://picsum.photos/seed/coffee-shop/1920/1080') center/cover no-referrer;
+            padding: 100px 0;
+            color: var(--primary);
+            text-align: center;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .experience-banner h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 992px) {
+            .editorial-grid, .mv-grid, .philosophy-grid, .product-feature-grid {
+                grid-template-columns: 1fr;
+            }
+            .editorial-image {
+                order: -1;
+            }
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+            .about-hero {
+                padding-top: 180px;
+                min-height: 40vh;
+            }
+            .editorial-section, .mission-vision, .philosophy-section, .product-showcase, .difference-section, .experience-banner {
+                padding: 30px 0;
+            }
+            .editorial-grid {
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body class="about-page">
+    <!-- Header (Same as index.html) -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="img/logo/logophu.png" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
+                MKT <span>C<span class="brand-o">O</span>FFEE</span>
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html#home" class="nav-link">Trang chủ</a></li>
+                    <li><a href="about.html" class="nav-link active">Giới thiệu</a></li>
+                    <li><a href="index.html#products" class="nav-link">Sản phẩm</a></li>
+                    <li><a href="blog.html" class="nav-link">Tin tức</a></li>
+                    <li class="desktop-only"><a href="index.html" class="btn btn-primary" style="padding: 8px 20px; border-radius: 20px; font-size: 14px;">Quay lại cửa hàng</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="mobile-menu-toggle" id="mobile-menu-toggle">
+                    <i data-lucide="menu"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-close" id="mobile-menu-close">
+            <i data-lucide="x"></i>
+        </div>
+        <div class="mobile-menu-brand">
+            <img src="img/logo/logophu.png" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="index.html#home" class="mobile-nav-link">Trang chủ</a></li>
+            <li><a href="about.html" class="mobile-nav-link active">Giới thiệu</a></li>
+            <li><a href="index.html#products" class="mobile-nav-link">Sản phẩm</a></li>
+            <li><a href="blog.html" class="mobile-nav-link">Tin tức</a></li>
+            <li style="margin-top: 20px;"><a href="index.html" class="btn btn-primary" style="padding: 12px 30px; border-radius: 30px; font-size: 18px;">Quay lại cửa hàng</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="container">
+                <h1 class="reveal">Hành Trình Từ Đất Đỏ Bazan</h1>
+                <p class="reveal" style="font-size: 1.2rem; max-width: 700px; margin: 20px auto;">Khám phá câu chuyện đằng sau mỗi hạt cà phê MKT - Nơi tinh hoa hội tụ.</p>
+            </div>
+        </section>
+
+        <!-- Intro Section -->
+        <section class="editorial-section">
+            <div class="container">
+                <div class="editorial-grid">
+                    <div class="editorial-content reveal">
+                        <h2>☕ Giới thiệu về MKT Coffee</h2>
+                        <p>MKT Coffee được sinh ra từ vùng đất đỏ bazan Buôn Ma Thuột – nơi hội tụ tinh hoa cà phê Việt Nam. Thương hiệu ra đời với khát vọng nâng tầm hạt cà phê Việt, biến mỗi ly cà phê không chỉ là thức uống mà còn là một trải nghiệm văn hóa.</p>
+                        <p>Chúng tôi là cầu nối giữa giá trị truyền thống Tây Nguyên và tư duy hiện đại, mang đến những sản phẩm cà phê sạch, chất lượng cao và đầy cảm hứng.</p>
+                    </div>
+                    <div class="editorial-image reveal">
+                        <img src="img/cauchuyen/ct1.jpg" alt="MKT Coffee Intro" referrerPolicy="no-referrer">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision -->
+        <section class="mission-vision">
+            <div class="container">
+                <h2 class="reveal">🌱 Tầm nhìn & Sứ mệnh</h2>
+                <div class="mv-grid">
+                    <div class="mv-card reveal">
+                        <h3>Tầm nhìn</h3>
+                        <p>Trở thành thương hiệu cà phê di sản hàng đầu, nơi khách hàng không chỉ uống cà phê mà còn trải nghiệm văn hóa Việt qua mọi giác quan.</p>
+                    </div>
+                    <div class="mv-card reveal">
+                        <h3>Sứ mệnh</h3>
+                        <ul>
+                            <li>Mang đến cà phê sạch – chuẩn – tốt cho sức khỏe</li>
+                            <li>Đồng hành cùng nông dân với mô hình bền vững</li>
+                            <li>Nâng tầm cà phê Việt trên thị trường quốc tế</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="philosophy-section">
+            <div class="container">
+                <h2 class="philosophy-title reveal">🔥 Triết lý thương hiệu</h2>
+                <div class="philosophy-grid">
+                    <div class="philosophy-item reveal">
+                        <i data-lucide="heart" style="width: 48px; height: 48px; color: var(--secondary); margin-bottom: 20px;"></i>
+                        <h3>Tận tâm</h3>
+                        <p>Tận tâm trong từng hạt cà phê, từ khâu chăm sóc đến khi tới tay khách hàng.</p>
+                    </div>
+                    <div class="philosophy-item reveal">
+                        <i data-lucide="coffee" style="width: 48px; height: 48px; color: var(--secondary); margin-bottom: 20px;"></i>
+                        <h3>Nguyên bản</h3>
+                        <p>Giữ nguyên bản hương vị tự nhiên của cà phê vùng đất đỏ bazan.</p>
+                    </div>
+                    <div class="philosophy-item reveal">
+                        <i data-lucide="sparkles" style="width: 48px; height: 48px; color: var(--secondary); margin-bottom: 20px;"></i>
+                        <h3>Sáng tạo</h3>
+                        <p>Sáng tạo trong cách thưởng thức hiện đại, phù hợp với xu hướng thế giới.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products -->
+        <section class="product-showcase">
+            <div class="container">
+                <h2 class="reveal" style="text-align: center; margin-bottom: 60px; font-family: 'Inter', sans-serif; font-size: 3rem;">☕ Sản phẩm nổi bật</h2>
+                <div class="product-feature-grid">
+                    <div class="product-feature-card reveal">
+                        <h4>1. Cà phê hạt rang xay</h4>
+                        <p><strong>Traditional:</strong> Đậm đà, phù hợp pha phin truyền thống</p>
+                        <p><strong>Specialty:</strong> Cao cấp, hương vị tinh tế, đạt chuẩn quốc tế</p>
+                    </div>
+                    <div class="product-feature-card reveal">
+                        <h4>2. Đồ uống tại cửa hàng</h4>
+                        <p><strong>Signature:</strong> Cafe trứng, espresso đặc trưng</p>
+                        <p><strong>Cold Brew:</strong> Thanh nhẹ, ít đắng, tốt cho sức khỏe</p>
+                    </div>
+                    <div class="product-feature-card reveal">
+                        <h4>3. Cà phê tiện lợi</h4>
+                        <p><strong>Drip Bag:</strong> Pha nhanh, chuẩn vị</p>
+                        <p><strong>Freeze-Dried:</strong> Giữ trọn hương vị như cà phê thật</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Difference -->
+        <section class="difference-section">
+            <div class="container">
+                <h2 class="reveal" style="text-align: center; margin-bottom: 80px; font-family: 'Inter', sans-serif; font-size: 3rem;">⭐ Điểm khác biệt</h2>
+                <div class="diff-list">
+                    <div class="diff-item reveal">
+                        <div class="diff-number">01</div>
+                        <div class="diff-text">
+                            <h3>Chuỗi cung ứng khép kín</h3>
+                            <p>Mô hình Farm-to-Cup giúp chúng tôi kiểm soát chất lượng tuyệt đối từ nông trại đến ly cà phê của bạn.</p>
+                        </div>
+                    </div>
+                    <div class="diff-item reveal">
+                        <div class="diff-number">02</div>
+                        <div class="diff-text">
+                            <h3>Công nghệ hiện đại</h3>
+                            <p>Sự kết hợp hoàn hảo giữa công nghệ rang tiên tiến và bàn tay tài hoa của những nghệ nhân giàu kinh nghiệm.</p>
+                        </div>
+                    </div>
+                    <div class="diff-item reveal">
+                        <div class="diff-number">03</div>
+                        <div class="diff-text">
+                            <h3>Không gian đương đại</h3>
+                            <p>Mang đậm chất Tây Nguyên đương đại, tạo nên một không gian thư giãn và đầy cảm hứng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="experience-banner">
+            <div class="container">
+                <h2 class="reveal">🌿 Trải nghiệm tại MKT Coffee</h2>
+                <p class="reveal" style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">Không chỉ là nơi uống cà phê, MKT Coffee mang đến không gian ấm áp, gần gũi với thiên nhiên, giúp bạn thư giãn, kết nối và tái tạo năng lượng mỗi ngày.</p>
+                <a href="index.html" class="btn btn-primary reveal" style="margin-top: 40px; padding: 15px 40px; border-radius: 30px;">KHÁM PHÁ NGAY</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-links">
+                <h4>Liên kết nhanh</h4>
+                <ul>
+                    <li><a href="index.html#home">Trang chủ</a></li>
+                    <li><a href="about.html">Giới thiệu</a></li>
+                    <li><a href="index.html#products">Sản phẩm</a></li>
+                    <li><a href="blog.html">Tin tức</a></li>
+                </ul>
+            </div>
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    MKT <span>C<span class="brand-foter">O</span>FFEE</span>
+                </a>
+                <p>Kết nối hương vị Việt - Mang tinh hoa cà phê Việt ra thế giới.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1AxVRK28nM/?mibextid=wwXIfr" title="Facebook" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                    </a>
+                    <a href="https://www.tiktok.com/@mktcoffee?_r=1&_t=ZS-94z9nYI6825" title="TikTok" target="_blank" rel="noopener noreferrer">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <h4>Thông tin liên hệ</h4>
+                <p><i data-lucide="map-pin"></i> Thôn EA BRINH, Xã Dur Kmăl,
+Tỉnh Đắk Lắk</p>
+                <p><i data-lucide="phone"></i> 0399 469 584</p>
+                <p><i data-lucide="mail"></i> NguyenTanHuy@mktcoffee.vn</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MKT COFFEE.Designed by Nguyen Tan Huy.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+            });
+        }
+
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Reveal animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

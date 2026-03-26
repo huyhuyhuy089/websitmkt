@@ -7,19 +7,19 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Lucide Icons (via CDN for simplicity in vanilla JS) -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" href="img/logo/logochinh.png" type="image/png">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="img/logo/lomkt.jpg" type="image/png">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="container header-container">
-            <a href="#home" class="logo">
-                <img src="img/logo/lomkt.jpg" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
-                MKT <span>COFFEE</span>
+            <a href="#" class="logo">
+                <img src="img/logo/logophu.png" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
+                MKT <span>C<span class="brand-o">O</span>FFEE</span>
             </a>
             
             <nav class="nav">
@@ -51,7 +51,7 @@
             <i data-lucide="x"></i>
         </div>
         <div class="mobile-menu-brand">
-            <img src="img/logo/lomkt.jpg" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
+            <img src="img/logo/logophu.png" alt="MKT COFFEE Logo" class="logo-img" referrerPolicy="no-referrer">
         </div>
         <ul class="mobile-nav-list">
             <li><a href="#home" class="mobile-nav-link">Trang chủ</a></li>
@@ -74,20 +74,20 @@
                 </div>
                 <div class="hero-slider">
                     <div class="slider-wrapper" id="hero-slider">
-                        <div class="slide active">
+                        <div class="slide active" data-color="rgba(101, 67, 33, 0.3)">
                             <img src="img/siderbar/cf1.jpg" alt="Coffee Cup 1" referrerPolicy="no-referrer">
                         </div>
-                        <div class="slide">
-                            <img src="img/siderbar/gt1.jpg" alt="Coffee Cup 2" referrerPolicy="no-referrer">
+                        <div class="slide" data-color="rgba(139, 69, 19, 0.3)">
+                            <img src="img/siderbar/sdb2.jpg" alt="Coffee Cup 2" referrerPolicy="no-referrer">
                         </div>
-                        <div class="slide">
-                            <img src="img/siderbar/sdb1.jpg" alt="Coffee Cup 3" referrerPolicy="no-referrer">
+                        <div class="slide" data-color="rgba(60, 40, 30, 0.3)">
+                            <img src="img/siderbar/sdb3.jpg" alt="Coffee Cup 3" referrerPolicy="no-referrer">
                         </div>
-                        <div class="slide">
-                            <img src="img/siderbar/sdb2.jpg" alt="Coffee Cup 4" referrerPolicy="no-referrer">
+                        <div class="slide" data-color="rgba(160, 82, 45, 0.3)">
+                            <img src="img/siderbar/sdb4.jpg" alt="Coffee Cup 4" referrerPolicy="no-referrer">
                         </div>
-                        <div class="slide">
-                            <img src="img/siderbar/sdb3.jpg" alt="Coffee Cup 5" referrerPolicy="no-referrer">
+                        <div class="slide" data-color="rgba(111, 78, 55, 0.3)">
+                            <img src="img/siderbar/sdb5.jpg" alt="Coffee Cup 5" referrerPolicy="no-referrer">
                         </div>
                     </div>
                     <div class="slider-dots" id="hero-dots">
@@ -109,13 +109,33 @@
                     <div class="section-underline"></div>
                 </div>
                 <div class="about-grid">
-                    <div class="about-image">
-                        <img src="img/cauchuyen/cc1.jpg" alt="Coffee Beans" referrerPolicy="no-referrer">
+                    <div class="about-collage reveal">
+                        <div class="collage-main">
+                            <img src="img/cauchuyen/ct1.jpg" alt="Main Coffee" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="collage-item item-top-left">
+                            <img src="img/cauchuyen/cc2.jpg" alt="Coffee Cup" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="collage-item item-bottom-left">
+                            <img src="img/cauchuyen/cc3.jpg" alt="Matcha" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="collage-item item-bottom-right">
+                            <img src="img/cauchuyen/cc4.jpg" alt="Coffee Cherries" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="collage-label label-1">
+                            <span>#MKT Coffee</span>
+                        </div>
+                        <div class="collage-label label-2">
+                            <span>Kết nối</span>
+                        </div>
+                        <div class="collage-label label-3">
+                            <span>Hương vị Việt</span>
+                        </div>
                     </div>
-                    <div class="about-text">
-                        <h3>MKT COFFEE - Hành trình di sản</h3>
+                    <div class="about-text reveal">
+                        <h3>MKT COFFEE - Nơi nụ cười lan tỏa</h3>
+                        <p>MKT COFFEE tin rằng, nụ cười là hương vị ngọt ngào nhất trong mỗi ngày mới. Từ những ly cà phê đậm đà, những tách trà thanh mát, đến từng lời chào thân quen, chúng tôi mong mỗi vị khách khi ghé Nhà đều mang theo một niềm vui nhỏ - để rồi nụ cười ấy lại được lan tỏa khắp nơi.</p>
                         <p>Bắt đầu từ những đồi cà phê bạt ngàn tại Tây Nguyên, MKT COFFEE ra đời với sứ mệnh gìn giữ và lan tỏa hương vị cà phê truyền thống Việt Nam đến với mọi người.</p>
-                        <p>Chúng tôi chú trọng vào quy trình rang xay thủ công, kết hợp với công nghệ hiện đại để giữ trọn vẹn tinh túy của hạt cà phê Arabica và Robusta thượng hạng.</p>
                         <div class="about-features">
                             <div class="feature">
                                 <i data-lucide="check-circle"></i>
@@ -125,11 +145,8 @@
                                 <i data-lucide="check-circle"></i>
                                 <span>Rang xay thủ công</span>
                             </div>
-                            <div class="feature">
-                                <i data-lucide="check-circle"></i>
-                                <span>Nguồn gốc rõ ràng</span>
-                            </div>
                         </div>
+                        <a href="about.html" class="btn btn-primary" style="margin-top: 30px; border-radius: 30px; padding: 12px 35px;">TÌM HIỂU</a>
                     </div>
                 </div>
             </div>
@@ -152,26 +169,31 @@
         <section class="blog" id="blog">
             <div class="container">
                 <div class="section-header">
-                    <h2 class="section-title">Tin Tức & Blog</h2>
+                    <h2 class="section-title">Tin Tức <span class="amp">&</span> Blog</h2>
                     <div class="section-underline"></div>
                 </div>
                 <div class="blog-grid">
-                    <div class="blog-card">
+                    <div class="blog-card reveal">
                         <img src="img/blog/cfdam.jpg" alt="Blog 1" referrerPolicy="no-referrer">
                         <div class="blog-info">
                             <span class="blog-date">20/03/2026</span>
                             <h4>Cách pha cà phê phin đậm đà</h4>
                             <p>Bí quyết để có một ly cà phê phin đúng chuẩn người Việt...</p>
+                            <a href="blog.html" class="read-more-link">Xem thêm</a>
                         </div>
                     </div>
-                    <div class="blog-card">
-                        <img src="img/blog/loiich.jpg" alt="Blog 2" referrerPolicy="no-referrer">
+                    <div class="blog-card reveal">
+                        <img src="img/blog/loiichcf.jpg" alt="Blog 2" referrerPolicy="no-referrer">
                         <div class="blog-info">
                             <span class="blog-date">20/03/2026</span>
                             <h4>Lợi ích của cà phê sạch</h4>
                             <p>Tại sao bạn nên chọn cà phê nguyên chất thay vì cà phê trộn...</p>
+                            <a href="blog.html" class="read-more-link">Xem thêm</a>
                         </div>
                     </div>
+                </div>
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="blog.html" class="btn btn-outline" style="padding: 12px 40px; border-radius: 30px; border: 1px solid var(--primary); color: var(--primary); font-weight: 600;">Xem tất cả tin tức</a>
                 </div>
             </div>
         </section>
@@ -218,30 +240,28 @@
             </div>
             <div class="footer-brand">
                 <a href="#" class="logo">
-                    MKT <span>COFFEE</span>
+                    MKT <span>C<span class="brand-foter">O</span>FFEE</span>
                 </a>
                 <p>Kết nối hương vị Việt - Mang tinh hoa cà phê Việt ra thế giới.</p>
                 <div class="social-links">
-                    <a href="#" title="Facebook">
+                    <a href="https://www.facebook.com/share/1AxVRK28nM/?mibextid=wwXIfr" title="Facebook" target="_blank" rel="noopener noreferrer">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                     </a>
-                    <a href="#" title="TikTok">
+                    <a href="https://www.tiktok.com/@mktcoffee?_r=1&_t=ZS-94z9nYI6825" title="TikTok" target="_blank" rel="noopener noreferrer">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tiktok"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-                    </a>
-                    <a href="#" title="Shopee">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shopping-bag"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
                     </a>
                 </div>
             </div>
             <div class="footer-contact">
                 <h4>Thông tin liên hệ</h4>
-                <p><i data-lucide="map-pin"></i> 123 Đường Cà Phê, Buôn Ma Thuột</p>
+                <p><i data-lucide="map-pin"></i> Thôn EA BRINH, Xã Dur Kmăl,
+Tỉnh Đắk Lắk</p>
                 <p><i data-lucide="phone"></i> 0399 469 584</p>
-                <p><i data-lucide="mail"></i> contact@mktcoffee.vn</p>
+                <p><i data-lucide="mail"></i> NguyenTanHuy@mktcoffee.vn</p>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 MKT COFFEE. All rights reserved.</p>
+            <p>&copy; 2026 MKT COFFEE.Designed by Nguyen Tan Huy.</p>
         </div>
     </footer>
 
@@ -282,7 +302,7 @@
                 </div>
                 <div class="form-group">
                     <label for="checkout-phone">Số điện thoại</label>
-                    <input type="tel" id="checkout-phone" pattern="[0-9]*" inputmode="numeric" placeholder="Ví dụ: 0123456789" required>
+                    <input type="tel" id="checkout-phone" pattern="0[0-9]*" inputmode="numeric" placeholder="Ví dụ: 0123456789" required>
                 </div>
                 <div class="form-group">
                     <label for="checkout-address">Địa chỉ giao hàng</label>
@@ -291,6 +311,15 @@
                 <div class="order-summary">
                     <h4>Tóm tắt đơn hàng</h4>
                     <div id="order-summary-list"></div>
+                    <div class="discount-section">
+                        <input type="text" id="discount-code" placeholder="Nhập mã giảm giá">
+                        <button type="button" class="btn-apply" id="apply-discount">Áp dụng</button>
+                    </div>
+                    <p id="discount-message" style="font-size: 14px; margin-top: 5px;"></p>
+                    <div class="discount-info" id="discount-display">
+                        <span>Giảm giá:</span>
+                        <span id="discount-amount">-0đ</span>
+                    </div>
                     <div class="order-total">
                         <strong>Tổng tiền:</strong>
                         <strong id="order-total-price">0đ</strong>
@@ -389,5 +418,49 @@
     </div>
 
     <script src="script.js"></script>
+
+<!-- code save sever -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDowZeJhS39krlKgo63rdCNIUE8CjUrxGQ",
+  authDomain: "web-mkt-8db1c.firebaseapp.com",
+  projectId: "web-mkt-8db1c",
+  storageBucket: "web-mkt-8db1c.firebasestorage.app",
+  messagingSenderId: "752096364222",
+  appId: "1:752096364222:web:d374e2dc2557623c5b40ef",
+  measurementId: "G-TB0FR05G30"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("checkout-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const order = {
+      name: document.getElementById("checkout-name").value,
+      phone: document.getElementById("checkout-phone").value,
+      address: document.getElementById("checkout-address").value,
+      cart: JSON.parse(localStorage.getItem("cart")) || [],
+      time: new Date(),
+      status: "pending"
+    };
+
+    try {
+      await addDoc(collection(db, "orders"), order);
+      alert("Đặt hàng thành công!");
+    } catch (err) {
+      console.error("Lỗi:", err);
+    }
+  });
+});
+</script>
+
+
+
 </body>
 </html>
