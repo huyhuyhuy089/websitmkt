@@ -22,42 +22,42 @@ const products = [
         name: "Cà phê Arabica",
         price: 150000,
         image: "img/produce/arabica.jpg",
-        desc: "Hương thơm nhẹ nhàng, vị chua thanh thoát."
+        desc: "Hạt cà phê Arabica nổi tiếng với hương thơm thanh nhẹ, vị chua dịu đặc trưng và hậu vị ngọt tinh tế. Phù hợp cho những ai yêu thích cà phê nhẹ nhàng, dễ uống, đặc biệt thích hợp để pha máy hoặc pour-over."
     },
     {
         id: 2,
         name: "Cà phê Robusta",
         price: 120000,
         image: "img/produce/cfrobuta.jpg",
-        desc: "Vị đắng đậm đà, hàm lượng caffeine cao."
+        desc: "Robusta mang đến vị đậm mạnh, hàm lượng caffeine cao, hậu vị đắng rõ rệt và ít chua. Đây là lựa chọn lý tưởng cho người cần sự tỉnh táo nhanh chóng hoặc yêu thích phong cách cà phê truyền thống Việt Nam."
     },
     {
         id: 3,
         name: "Cà phê túi lọc",
         price: 85000,
         image: "img/produce/cftuiloc.png",
-        desc: "Tiện lợi, giữ trọn hương vị pha phin."
+        desc: "Giải pháp tiện lợi cho người bận rộn – chỉ cần nước nóng là có ngay ly cà phê thơm ngon. Giữ trọn hương vị nguyên bản, dễ mang theo và sử dụng mọi lúc mọi nơi."
     },
     {
         id: 4,
         name: "Cà phê Moka",
         price: 155000,
         image: "img/produce/cfmoka.jpg",
-        desc: "Cà phê ủ lạnh mượt mà, ít acid."
+        desc: "Moka là sự kết hợp hoàn hảo giữa vị chua nhẹ của Arabica và độ đậm đà tinh tế. Hương thơm quyến rũ, hậu vị sâu, thích hợp cho người muốn trải nghiệm cà phê cân bằng và cao cấp hơn."
     },
     {
         id: 5,
         name: "Cà phê Culi",
         price: 135000,
         image: "img/produce/cfculi.webp",
-        desc: "Đặc sản đường phố Việt Nam."
+        desc: "Được tuyển chọn từ những hạt cà phê tròn đặc biệt (Culi), sản phẩm có vị đậm, mạnh và hương thơm nồng hơn so với cà phê thông thường. Rất phù hợp với người thích cà phê “đậm chất” và cá tính."
     },
     {
         id: 6,
         name: "Combo cà phê",
         price: 450000,
         image: "img/produce/comboqua.jpg",
-        desc: "Bộ quà tặng ý nghĩa cho người yêu cà phê."
+        desc: "Bộ quà tặng gồm các sản phẩm cà phê chất lượng cao, kết hợp cùng phụ kiện tiện ích. Phù hợp làm quà biếu sang trọng hoặc trải nghiệm nhiều hương vị khác nhau trong một set duy nhất."
     }
 ];
 

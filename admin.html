@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Quản Trị - MKT COFFEE</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f0f2f5; color: #333; }
+        
+        /* --- GIAO DIỆN ĐĂNG NHẬP --- */
+        #login-screen { display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #654321, #2c3e50); }
+        .login-box { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); width: 350px; text-align: center; }
+        .login-box h2 { margin-top: 0; color: #654321; }
+        .login-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; outline: none; }
+        .login-box button { width: 100%; padding: 12px; background: #654321; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px;}
+        .login-box button:hover { background: #4a3018; }
+        .error-msg { color: red; font-size: 14px; display: none; margin-bottom: 10px; }
+
+        /* --- GIAO DIỆN ADMIN (DASHBOARD) --- */
+        #admin-screen { display: none; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .btn-logout { background: #ff4d4d; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        /* TABS */
+        .tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px;}
+        .tab-btn { padding: 10px 20px; border: none; background: transparent; cursor: pointer; font-size: 16px; font-weight: bold; border-radius: 5px; color: #555;}
+        .tab-btn.active { background: #654321; color: white; }
+        
+        .tab-content { display: none; background: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .tab-content.active { display: block; }
+
+        /* TOOLBAR ĐƠN HÀNG */
+        .toolbar { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;}
+        .toolbar input, .toolbar select { padding: 10px; border: 1px solid #ccc; border-radius: 5px; flex: 1; min-width: 200px;}
+
+        /* BẢNG DỮ LIỆU */
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px;}
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #f8f9fa; }
+        tr:hover { background-color: #f1f1f1; }
+        
+        /* NÚT THAO TÁC */
+        .badge-pending { color: #d35400; font-weight: bold; background: #fdebd0; padding: 4px 8px; border-radius: 4px; }
+        .badge-done { color: #27ae60; font-weight: bold; background: #d5f5e3; padding: 4px 8px; border-radius: 4px; }
+        
+        .btn-action { padding: 6px 10px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; margin-right: 5px; margin-bottom: 5px; display: inline-block;}
+        .btn-edit { background: #3498db; color: white; }
+        .btn-print { background: #8e44ad; color: white; }
+        .btn-xoa { background: #e74c3c; color: white; }
+    </style>
+</head>
+<body>
+
+    <div id="login-screen">
+        <div class="login-box">
+            <h2>MKT COFFEE ADMIN</h2>
+            <div id="error-msg" class="error-msg">Sai số điện thoại hoặc mật khẩu!</div>
+            <input type="text" id="login-phone" placeholder="Số điện thoại" required>
+            <input type="password" id="login-pass" placeholder="Mật khẩu" required>
+            <button id="btn-login">Đăng Nhập</button>
+        </div>
+    </div>
+
+    <div id="admin-screen">
+        <div class="header">
+            <h1>Trang ADMIN MKT COFFEE</h1>
+            <button class="btn-logout" id="btn-logout">Đăng Xuất</button>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="chuyenTab('tab-don-hang', this)"> Đơn Hàng</button>
+            <button class="tab-btn" onclick="chuyenTab('tab-lien-he', this)"> Liên Hệ</button>
+        </div>
+
+        <div id="tab-don-hang" class="tab-content active">
+            <div class="toolbar">
+                <input type="text" id="search-order" placeholder="Tìm theo tên hoặc SĐT khách hàng...">
+                <select id="filter-status">
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="pending">Chờ xử lý</option>
+                    <option value="hoan_thanh">Đã giao</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Mã Đơn</th>
+                        <th>Khách Hàng</th>
+                        <th>SĐT và Địa chỉ</th>
+                        <th>Tổng Tiền</th>
+                        <th>Trạng Thái</th>
+                        <th style="min-width: 200px;">Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody id="bang-don-hang"></tbody>
+            </table>
+        </div>
+
+        <div id="tab-lien-he" class="tab-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Thời Gian</th>
+                        <th>Khách Hàng</th>
+                        <th>Email</th>
+                        <th>Lời Nhắn</th>
+                        <th>Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody id="bang-lien-he"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy, deleteDoc, updateDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDowZeJhS39krlKgo63rdCNIUE8CjUrxGQ",
+            authDomain: "web-mkt-8db1c.firebaseapp.com",
+            projectId: "web-mkt-8db1c",
+            storageBucket: "web-mkt-8db1c.firebasestorage.app",
+            messagingSenderId: "752096364222",
+            appId: "1:752096364222:web:d374e2dc2557623c5b40ef",
+            measurementId: "G-TB0FR05G30"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let danhSachDonHang = []; 
+
+        // --- 1. XỬ LÝ ĐĂNG NHẬP ---
+        const ADMIN_PHONE = "0399469584"; 
+        const ADMIN_PASS = "nguyentanhuy";    
+
+        document.getElementById("btn-login").addEventListener("click", () => {
+            if (document.getElementById("login-phone").value === ADMIN_PHONE && document.getElementById("login-pass").value === ADMIN_PASS) {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("admin-screen").style.display = "block";
+                taiDanhSachDonHang();
+                taiDanhSachLienHe();
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        });
+
+        document.getElementById("btn-logout").addEventListener("click", () => location.reload());
+
+        window.chuyenTab = function(tabId, btnElement) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
+        }
+
+        function formatTien(tien) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(tien || 0);
+        }
+
+        // --- 2. QUẢN LÝ ĐƠN HÀNG ---
+        async function taiDanhSachDonHang() {
+            try {
+                const q = query(collection(db, "orders"), orderBy("createdAt", "desc"));
+                const snapshot = await getDocs(q);
+                danhSachDonHang = []; 
+                snapshot.forEach(doc => danhSachDonHang.push({ db_id: doc.id, ...doc.data() }));
+                hienThiDonHang(danhSachDonHang);
+            } catch (e) { console.error(e); }
+        }
+
+        function hienThiDonHang(mangDuLieu) {
+            const tbody = document.getElementById("bang-don-hang");
+            tbody.innerHTML = "";
+            if(mangDuLieu.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;">Không tìm thấy đơn hàng nào!</td></tr>';
+                return;
+            }
+
+            mangDuLieu.forEach(data => {
+                let badge = data.status === "hoan_thanh" ? '<span class="badge-done">Đã giao</span>' : '<span class="badge-pending">Chờ xử lý</span>';
+                
+                const itemsJSON = encodeURIComponent(JSON.stringify(data.items || []));
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td><strong>${data.id}</strong><br><small>${data.date || ''}</small></td>
+                        <td><strong>${data.name}</strong></td>
+                        <td>${data.phone}<br><small>${data.address}</small></td>
+                        <td style="color:red; font-weight:bold;">${formatTien(data.total)}</td>
+                        <td>${badge}</td>
+                        <td>
+                            <button class="btn-action btn-edit btn-chinh-sua" data-id="${data.db_id}">Đã giao</button>
+                            <button class="btn-action btn-print btn-in" data-name="${data.name}" data-phone="${data.phone}" data-address="${data.address}" data-id="${data.id}" data-total="${data.total}" data-discount="${data.discount || 0}" data-items="${itemsJSON}">Xem Bill</button>
+                            <button class="btn-action btn-xoa" data-id="${data.db_id}" data-type="orders">Xóa</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Bắt sự kiện Lọc & Tìm kiếm
+        document.getElementById("search-order").addEventListener("input", locDuLieu);
+        document.getElementById("filter-status").addEventListener("change", locDuLieu);
+
+        function locDuLieu() {
+            const tuKhoa = document.getElementById("search-order").value.toLowerCase();
+            const trangThai = document.getElementById("filter-status").value;
+
+            const ketQua = danhSachDonHang.filter(don => {
+                const matchTenSdt = don.name.toLowerCase().includes(tuKhoa) || don.phone.includes(tuKhoa);
+                const matchTrangThai = (trangThai === "all") || (don.status === trangThai) || (!don.status && trangThai === "pending");
+                return matchTenSdt && matchTrangThai;
+            });
+            hienThiDonHang(ketQua);
+        }
+
+        // --- 3. QUẢN LÝ LIÊN HỆ ---
+        async function taiDanhSachLienHe() {
+            try {
+                const snapshot = await getDocs(query(collection(db, "contacts"), orderBy("createdAt", "desc")));
+                const tbody = document.getElementById("bang-lien-he");
+                tbody.innerHTML = "";
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    let ngayGui = data.createdAt ? data.createdAt.toDate().toLocaleString('vi-VN') : "";
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>${ngayGui}</td><td><strong>${data.name}</strong></td><td>${data.email}</td><td>${data.message}</td>
+                            <td><button class="btn-action btn-xoa" data-id="${doc.id}" data-type="contacts">Xóa</button></td>
+                        </tr>
+                    `;
+                });
+            } catch (e) { console.error(e); }
+        }
+
+        // --- 4. SỰ KIỆN CLICK CHUNG (XÓA, SỬA, XEM HÓA ĐƠN) ---
+        document.addEventListener("click", async (e) => {
+            // XÓA
+            if (e.target.classList.contains("btn-xoa")) {
+                const docId = e.target.getAttribute("data-id");
+                const loaiBang = e.target.getAttribute("data-type");
+                if (confirm(`Chắc chắn muốn xóa mục này?`)) {
+                    await deleteDoc(doc(db, loaiBang, docId));
+                    if(loaiBang === "orders") taiDanhSachDonHang();
+                    else taiDanhSachLienHe();
+                }
+            }
+            
+            // ĐÁNH DẤU ĐÃ GIAO
+            if (e.target.classList.contains("btn-chinh-sua")) {
+                if (confirm("Đánh dấu đơn hàng này là 'Đã Giao Xong'?")) {
+                    await updateDoc(doc(db, "orders", e.target.getAttribute("data-id")), { status: "hoan_thanh" });
+                    taiDanhSachDonHang(); 
+                }
+            }
+
+            // XEM HÓA ĐƠN (Không tự in, chỉ hiển thị để xem)
+            if (e.target.classList.contains("btn-in")) {
+                const btn = e.target;
+                const ten = btn.getAttribute("data-name");
+                const sdt = btn.getAttribute("data-phone");
+                const diaChi = btn.getAttribute("data-address");
+                const maDon = btn.getAttribute("data-id");
+                const tongTien = btn.getAttribute("data-total");
+                const giamGia = btn.getAttribute("data-discount");
+                
+                const itemsStr = decodeURIComponent(btn.getAttribute("data-items"));
+                const items = JSON.parse(itemsStr);
+
+                const printWindow = window.open('', '', 'width=450,height=650');
+                
+                let htmlHoaDon = `
+                    <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 400px; margin: auto; border: 1px dashed #000; background: #fff;">
+                        <h2 style="text-align: center; margin-bottom: 5px;">MKT COFFEE</h2>
+                        <p style="text-align: center; margin-top: 0; font-size: 12px;">Kết Nối Hương Vị Việt</p>
+                        <hr style="border-top: 1px dashed #000;">
+                        <p><strong>Mã đơn:</strong> ${maDon}</p>
+                        <p><strong>Khách hàng:</strong> ${ten} - ${sdt}</p>
+                        <p><strong>Địa chỉ:</strong> ${diaChi}</p>
+                        <hr style="border-top: 1px dashed #000;">
+                        <table style="width: 100%; text-align: left; font-size: 14px;">
+                            <tr><th>Món</th><th>SL</th><th style="text-align: right;">Thành Tiền</th></tr>
+                `;
+
+                items.forEach(item => {
+                    htmlHoaDon += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>x${item.quantity}</td>
+                            <td style="text-align: right;">${formatTien(item.price * item.quantity)}</td>
+                        </tr>
+                    `;
+                });
+
+                htmlHoaDon += `
+                        </table>
+                        <hr style="border-top: 1px dashed #000;">
+                        <p style="text-align: right; margin-bottom: 5px;">Giảm giá: -${formatTien(giamGia)}</p>
+                        <h3 style="text-align: right; margin-top: 0;">TỔNG: ${formatTien(tongTien)}</h3>
+                        <p style="text-align: center; font-style: italic; font-size: 12px; margin-top: 20px;">Cảm ơn quý khách!</p>
+                        
+                        <div style="text-align: center; margin-top: 30px; border-top: 1px solid #eee; padding-top: 15px;">
+                            <button onclick="window.print()" style="padding: 8px 15px; cursor: pointer; background: #654321; color: white; border: none; border-radius: 4px;"> In Bill Này</button>
+                            <button onclick="window.close()" style="padding: 8px 15px; cursor: pointer; background: #ccc; border: none; border-radius: 4px; margin-left: 10px;"> Đóng Lại</button>
+                        </div>
+                    </div>
+                `;
+
+                printWindow.document.write(htmlHoaDon);
+                printWindow.document.close();
+                printWindow.focus();
+            }
+        });
+    </script>
+</body>
+</html>
