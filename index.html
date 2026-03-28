@@ -422,7 +422,7 @@ Tỉnh Đắk Lắk</p>
 <!-- code save sever -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDowZeJhS39krlKgo63rdCNIUE8CjUrxGQ",
@@ -434,29 +434,72 @@ const firebaseConfig = {
   measurementId: "G-TB0FR05G30"
 };
 
+// Khởi tạo Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("checkout-form").addEventListener("submit", async (e) => {
-    e.preventDefault();
+    
+    // 1. CÁCH MỚI CHO ĐƠN HÀNG: DÙNG RADAR QUÉT LOCALSTORAGE LIÊN TỤC
+    // Lấy số lượng đơn hàng ban đầu đang có trong máy
+    let initialOrders = JSON.parse(localStorage.getItem("mkt_coffee_orders")) || [];
+    let lastOrderCount = initialOrders.length;
 
-    const order = {
-      name: document.getElementById("checkout-name").value,
-      phone: document.getElementById("checkout-phone").value,
-      address: document.getElementById("checkout-address").value,
-      cart: JSON.parse(localStorage.getItem("cart")) || [],
-      time: new Date(),
-      status: "pending"
-    };
+    // Cứ mỗi 0.5 giây, âm thầm kiểm tra xem file script.js có tạo đơn mới nào không
+    setInterval(async () => {
+        const currentOrders = JSON.parse(localStorage.getItem("mkt_coffee_orders")) || [];
+        
+        // Nếu phát hiện số lượng đơn tăng lên (tức là script.js vừa xử lý xong 1 đơn hàng)
+        if (currentOrders.length > lastOrderCount) {
+            const latestOrder = currentOrders[currentOrders.length - 1]; // Lấy đúng đơn hàng mới nhất đó
+            lastOrderCount = currentOrders.length; // Cập nhật lại số đếm để không bị gửi trùng
+            
+            // Xếp dữ liệu theo ĐÚNG CHUẨN format mà bạn yêu cầu
+            const firestoreOrder = {
+                id: latestOrder.id,
+                date: latestOrder.date,
+                name: latestOrder.name,
+                phone: latestOrder.phone,
+                address: latestOrder.address,
+                items: latestOrder.items,
+                subtotal: latestOrder.subtotal,
+                discount: latestOrder.discount,
+                total: latestOrder.total,
+                createdAt: serverTimestamp() // Giờ của máy chủ Firebase
+            };
 
-    try {
-      await addDoc(collection(db, "orders"), order);
-      alert("Đặt hàng thành công!");
-    } catch (err) {
-      console.error("Lỗi:", err);
+            try {
+                // QUAN TRỌNG: Nếu trên Firebase bạn đặt tên bảng là "oder" (thiếu chữ s)
+                // Hãy sửa chữ "orders" màu đỏ dưới đây thành "oder" cho khớp nhé!
+                await addDoc(collection(db, "orders"), firestoreOrder);
+                
+                console.log("✅ Đã bắt được đơn hàng và lưu lên Firebase thành công:", latestOrder.id);
+            } catch (err) {
+                console.error("❌ Lỗi lưu đơn hàng:", err);
+            }
+        }
+    }, 500); // 500 mili-giây quét 1 lần
+
+    // 2. LƯU LIÊN HỆ (Phần này bạn nói đã chạy ngon nên mình giữ nguyên)
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+        contactForm.addEventListener("submit", async (e) => {
+            const contactData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value,
+                createdAt: serverTimestamp(),
+                status: "new"
+            };
+
+            try {
+                await addDoc(collection(db, "contacts"), contactData);
+                console.log("✅ Đã lưu liên hệ lên Firebase!");
+            } catch (err) {
+                console.error("❌ Lỗi lưu liên hệ:", err);
+            }
+        }, true);
     }
-  });
 });
 </script>
 
