@@ -56,7 +56,7 @@ const products = [
         id: 6,
         name: "Combo cà phê",
         price: 450000,
-        image: "img/produce/comboqua.jpg",
+        image: "img/produce/comboqua.png",
         desc: "Bộ quà tặng gồm các sản phẩm cà phê chất lượng cao, kết hợp cùng phụ kiện tiện ích. Phù hợp làm quà biếu sang trọng hoặc trải nghiệm nhiều hương vị khác nhau trong một set duy nhất."
     }
 ];
