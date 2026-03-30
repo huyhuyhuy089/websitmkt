@@ -879,11 +879,13 @@ img {
 .footer-brand p {
     opacity: 0.9;
     margin-bottom: 20px;
-    max-width: 400px;
+    max-width: 600px; 
+    margin-left: auto;  /* Căn giữa */
+    margin-right: auto; /* Căn giữa */
+    text-align: center; /* Chữ nằm giữa dòng */
     font-size: 15px;
     line-height: 1.8;
 }
-
 .social-links {
     display: flex;
     gap: 15px;
