@@ -20,42 +20,42 @@ const products = [
     {
         id: 1,
         name: "Cà phê Arabica",
-        price: 150000,
+        price: 135000,
         image: "img/produce/arabica.jpg",
-        desc: "Hạt cà phê Arabica nổi tiếng với hương thơm thanh nhẹ, vị chua dịu đặc trưng và hậu vị ngọt tinh tế. Phù hợp cho những ai yêu thích cà phê nhẹ nhàng, dễ uống, đặc biệt thích hợp để pha máy hoặc pour-over."
+        desc: "Hạt cà phê Arabica nổi tiếng với hương thơm thanh nhẹ, vị chua dịu đặc trưng và hậu vị ngọt tinh tế. Phù hợp cho những ai yêu thích cà phê nhẹ nhàng, dễ uống, đặc biệt thích hợp để pha máy hoặc pour-over. Giá: 135.000 đ / túi 250g."
     },
     {
         id: 2,
         name: "Cà phê Robusta",
-        price: 120000,
+        price: 85000,
         image: "img/produce/cfrobuta.jpg",
-        desc: "Robusta mang đến vị đậm mạnh, hàm lượng caffeine cao, hậu vị đắng rõ rệt và ít chua. Đây là lựa chọn lý tưởng cho người cần sự tỉnh táo nhanh chóng hoặc yêu thích phong cách cà phê truyền thống Việt Nam."
+        desc: "Robusta mang đến vị đậm mạnh, hàm lượng caffeine cao, hậu vị đắng rõ rệt và ít chua. Đây là lựa chọn lý tưởng cho người cần sự tỉnh táo nhanh chóng hoặc yêu thích phong cách cà phê truyền thống Việt Nam. Giá: 85.000 đ / túi 250g."
     },
     {
         id: 3,
         name: "Cà phê túi lọc",
-        price: 85000,
+        price: 65000,
         image: "img/produce/cftuiloc.png",
-        desc: "Giải pháp tiện lợi cho người bận rộn – chỉ cần nước nóng là có ngay ly cà phê thơm ngon. Giữ trọn hương vị nguyên bản, dễ mang theo và sử dụng mọi lúc mọi nơi."
+        desc: "Giải pháp tiện lợi cho người bận rộn – chỉ cần nước nóng là có ngay ly cà phê thơm ngon. Giữ trọn hương vị nguyên bản, dễ mang theo và sử dụng mọi lúc mọi nơi. Phù hợp cho cả người mới bắt đầu và những ai muốn thưởng thức cà phê nhanh chóng mà không cần thiết bị pha phức tạp. Giá: 65.000 đ / hộp 10 túi lọc."
     },
     {
         id: 4,
         name: "Cà phê Moka",
-        price: 155000,
+        price: 165000,
         image: "img/produce/cfmoka.jpg",
-        desc: "Moka là sự kết hợp hoàn hảo giữa vị chua nhẹ của Arabica và độ đậm đà tinh tế. Hương thơm quyến rũ, hậu vị sâu, thích hợp cho người muốn trải nghiệm cà phê cân bằng và cao cấp hơn."
+        desc: "Moka là sự kết hợp hoàn hảo giữa vị chua nhẹ của Arabica và độ đậm đà tinh tế. Hương thơm quyến rũ, hậu vị sâu, thích hợp cho người muốn trải nghiệm cà phê cân bằng và cao cấp hơn. Giá: 165.000 đ / túi 250g."
     },
     {
         id: 5,
         name: "Cà phê Culi",
-        price: 135000,
+        price: 105000,
         image: "img/produce/cfculi.webp",
-        desc: "Được tuyển chọn từ những hạt cà phê tròn đặc biệt (Culi), sản phẩm có vị đậm, mạnh và hương thơm nồng hơn so với cà phê thông thường. Rất phù hợp với người thích cà phê “đậm chất” và cá tính."
+        desc: "Được tuyển chọn từ những hạt cà phê tròn đặc biệt (Culi), sản phẩm có vị đậm, mạnh và hương thơm nồng hơn so với cà phê thông thường. Rất phù hợp với người thích cà phê “đậm chất” và cá tính. Giá: 105.000 đ / túi 250g."
     },
     {
         id: 6,
         name: "Combo cà phê",
-        price: 450000,
+        price: 395000,
         image: "img/produce/comboqua.png",
         desc: "Bộ quà tặng gồm các sản phẩm cà phê chất lượng cao, kết hợp cùng phụ kiện tiện ích. Phù hợp làm quà biếu sang trọng hoặc trải nghiệm nhiều hương vị khác nhau trong một set duy nhất."
     }
